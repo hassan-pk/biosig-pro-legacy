@@ -1,0 +1,108 @@
+.biosig-container {
+    position:         relative;
+    width:            100%;
+    max-width:        600px;
+    border:           1px solid #c4c4c4;
+    border-radius:    8px;
+    background-color: #ffffff;
+    box-shadow:       0 2px 4px rgba(0,0,0,0.05);
+    overflow:         hidden;
+    font-family:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.biosig-canvas {
+    display:             block;
+    cursor:              crosshair;
+    touch-action:        none;
+    background-image:    linear-gradient(#e5e5e5 1px, transparent 1px);
+    background-size:     100% 30px;
+    background-position: 0 20px;
+}
+
+.biosig-footer {
+    display:          flex;
+    justify-content:  space-between;
+    align-items:      center;
+    padding:          10px 15px;
+    background-color: #f9f9f9;
+    border-top:       1px solid #eaeaea;
+}
+
+.biosig-label {
+    font-size:      12px;
+    font-weight:    600;
+    color:          #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.biosig-actions {
+    display:     flex;
+    align-items: center;
+    gap:         8px;
+}
+
+.biosig-pointer-badge {
+    font-size:      11px;
+    font-weight:    600;
+    color:          #888888;
+    border:         1px solid #888888;
+    border-radius:  20px;
+    padding:        2px 10px;
+    font-family:    inherit;
+    transition:     all 0.3s ease;
+    user-select:    none;
+}
+
+.biosig-clear {
+    appearance:       none;
+    background-color: #ffffff;
+    border:           1px solid #d1d1d1;
+    border-radius:    4px;
+    color:            #d93025;
+    cursor:           pointer;
+    font-size:        12px;
+    font-weight:      600;
+    padding:          6px 12px;
+    transition:       all 0.2s ease;
+}
+
+.biosig-clear:hover {
+    background-color: #fff5f5;
+    border-color:     #d93025;
+    box-shadow:       0 1px 2px rgba(0,0,0,0.1);
+}
+
+.biosig-clear:active {
+    background-color: #ffeaea;
+    transform:        translateY(1px);
+}
+
+.biosig-text-mode {
+    display:     flex;
+    align-items: center;
+    gap:         8px;
+    padding:     10px 15px;
+    background:  #f9f9f9;
+    border-top:  1px solid #eaeaea;
+}
+
+.biosig-text-mode input[type="text"] {
+    flex:          1;
+    max-width:     260px;
+    padding:       5px 10px;
+    font-size:     13px;
+    border:        1px solid #d0d0d0;
+    border-radius: 4px;
+    outline:       none;
+    font-family:   inherit;
+    transition:    border-color 0.2s ease;
+}
+
+.biosig-text-mode input[type="text"]:focus {
+    border-color: #888888;
+}
+
+@media (max-width: 480px) {
+    .biosig-container { max-width: 100%; }
+}
