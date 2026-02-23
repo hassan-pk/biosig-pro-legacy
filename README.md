@@ -8,7 +8,8 @@
 
 > A production-grade biometric signature capture plugin for Oracle APEX
 
-<!-- DEMO GIF HERE -->
+<img width="472" height="377" alt="gif" src="https://github.com/user-attachments/assets/21fc4488-8aea-45ec-b8a5-d78852017557" />
+
 
 ## ✨ Features
 
@@ -43,7 +44,10 @@ See the full attribute reference in [docs/CONFIGURATION.md](docs/CONFIGURATION.m
 
 ## 🖼️ Screenshots
 
-<!-- SCREENSHOTS HERE -->
+<img width="445" height="386" alt="image" src="https://github.com/user-attachments/assets/61d2cdd7-baf5-4faf-ac49-a350bc4b5749" />
+<img width="472" height="377" alt="image" src="https://github.com/user-attachments/assets/c837e07d-3643-4599-a947-e6d8617e0ab4" />
+
+
 
 ## 🧱 Built With
 
@@ -59,8 +63,8 @@ See the full attribute reference in [docs/CONFIGURATION.md](docs/CONFIGURATION.m
 - Oracle APEX Cloud Developer Certified Professional
 - Senior Oracle Application Developer at S&H Software Solutions, Frankfurt
 
-- GitHub: https://github.com/oraclewithhassan
-- LinkedIn: [YOUR LINKEDIN]
+- GitHub: https://github.com/Darkhound-droid/
+- LinkedIn: https://www.linkedin.com/in/link-hassan-raza/
 
 ## 🤝 Contributing
 
