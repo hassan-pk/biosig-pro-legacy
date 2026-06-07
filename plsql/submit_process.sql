@@ -13,8 +13,8 @@ begin
                 uplo_created
             ) values (
                 l_blob,
-                'image/png',
-                'signature_' || to_char(sysdate, 'YYYYMMDD_HH24MISS') || '.png',
+                'image/jpeg',
+                'signature_' || to_char(sysdate, 'YYYYMMDD_HH24MISS') || '.jpg',
                 :app_user,
                 sysdate
             )
@@ -22,4 +22,12 @@ begin
             :P2_SIG := null;
         end if;
     end if;
+exception
+    when others then
+        -- Surface the error to APEX so the user sees a meaningful message
+        -- instead of a silent partial save.
+        apex_error.add_error(
+            p_message          => 'Signature could not be saved: ' || sqlerrm,
+            p_display_location => apex_error.c_inline_in_notification
+        );
 end;
