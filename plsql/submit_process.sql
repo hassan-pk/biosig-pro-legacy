@@ -13,8 +13,8 @@ begin
                 uplo_created
             ) values (
                 l_blob,
-                'image/png',
-                'signature_' || to_char(sysdate, 'YYYYMMDD_HH24MISS') || '.png',
+                'image/jpeg',
+                'signature_' || to_char(sysdate, 'YYYYMMDD_HH24MISS') || '.jpg',
                 :app_user,
                 sysdate
             )

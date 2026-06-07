@@ -90,11 +90,27 @@ var initBioSigPro = function(config) {
         exportSignature();
     };
 
+    // Composite the source canvas onto a white background and export as JPEG.
+    // PNG base64 for complex signatures can exceed 32,767 chars (Oracle VARCHAR2
+    // limit), causing silent truncation. JPEG at quality 0.92 stays well under
+    // that limit for any realistic signature while keeping visual fidelity.
+    const canvasToJpegBase64 = (src) => {
+        const quality = config.imageQuality || 0.92;
+        const tmp = document.createElement('canvas');
+        tmp.width  = src.width;
+        tmp.height = src.height;
+        const tmpCtx = tmp.getContext('2d');
+        tmpCtx.fillStyle = '#ffffff';
+        tmpCtx.fillRect(0, 0, tmp.width, tmp.height);
+        tmpCtx.drawImage(src, 0, 0);
+        return tmp.toDataURL('image/jpeg', quality).split(',')[1];
+    };
+
     const exportSignature = () => {
         const deg = config.rotateDeg || 0;
         let base64;
         if (deg === 0) {
-            base64 = canvas.toDataURL('image/png').split(',')[1];
+            base64 = canvasToJpegBase64(canvas);
         } else {
             const rad  = deg * Math.PI / 180;
             const sin  = Math.abs(Math.sin(rad));
@@ -108,7 +124,7 @@ var initBioSigPro = function(config) {
             offCtx.translate(newW / 2, newH / 2);
             offCtx.rotate(rad);
             offCtx.drawImage(canvas, -canvas.width / 2, -canvas.height / 2);
-            base64 = off.toDataURL('image/png').split(',')[1];
+            base64 = canvasToJpegBase64(off);
         }
         hidden.value = base64;
         if (typeof apex !== 'undefined') {
