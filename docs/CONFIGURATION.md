@@ -10,7 +10,7 @@ Use this guide to configure BioSig Pro consistently across desktop, tablet, and 
 | 2 | Pen Color | Text | #000000 | Stroke color (hex) |
 | 3 | Canvas Width | Number | 600 | Width of signature canvas in px |
 | 4 | Pen Width | Number | 2 | Base stroke thickness in px |
-| 5 | Rotate Degrees | Number | 0 | Rotate exported PNG by N degrees |
+| 5 | Rotate Degrees | Number | 0 | Rotate exported image by N degrees |
 | 6 | Allow Text Signature | Select (Y/N) | N | Show typed name signature input |
 | 7 | Placeholder Text | Text | Sign here... | Canvas placeholder text |
 
@@ -87,6 +87,8 @@ Canvas Width = 600
   - Finger (`touch`) → thicker
   - Mouse (`mouse`) → base width
 
+  Stroke width also varies within each stroke via pressure simulation (slow = thicker, fast = thinner). Real stylus pressure from the Pointer Events API overrides the simulation.
+
 ### Recommended values
 - `2` for most use cases
 - `3` for larger canvases or low-contrast displays
@@ -105,7 +107,7 @@ Pen Width = 2
 
 - **Type:** Number
 - **Default:** `0`
-- **What it controls:** Rotates exported PNG by the specified number of degrees before submission.
+- **What it controls:** Rotates the exported JPEG image by the specified number of degrees before submission.
 
 ### Recommended values
 - `0` for standard capture
@@ -184,7 +186,8 @@ Placeholder Text = Please sign to continue
 
 ## Production Tips
 
-- Store resulting PNG as BLOB for durability and easy retrieval.
-- Keep item session state at **Per Session (Disk)** for large CLOB payloads.
-- Validate non-empty base64 before conversion and insert.
+- Store the resulting JPEG as BLOB for durability and easy retrieval.
+- Keep item session state at **Per Session (Disk)** with **Data Type = CLOB** — this is critical to prevent silent base64 truncation before the submit process runs.
+- Validate non-empty base64 before conversion and insert (the provided submit process already does this).
 - Use HTTPS and least-privilege page/process security for sensitive capture flows.
+- If your downstream system checks MIME type, expect `image/jpeg` (not `image/png`).
