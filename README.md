@@ -3,6 +3,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-yellow?logo=javascript&logoColor=black)
 ![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Oracle ACE](https://img.shields.io/badge/Oracle-ACE%20Apprentice-orange)
+![Version](https://img.shields.io/badge/version-2.0.0-brightgreen)
 
 # BioSig Pro — Signature Plugin for Oracle APEX
 
@@ -15,11 +16,15 @@
 
 - ✦ Draw signature with mouse, stylus, or finger
 - ✦ Pointer-type awareness — auto-adjusts stroke weight (Mouse / Stylus / Finger)
+- ✦ Bézier stroke smoothing — C1-continuous curves, no jagged segments
+- ✦ Pressure simulation — slow strokes thicker, fast strokes thinner; real stylus pressure used when available
 - ✦ Text signature mode — type name, renders in cursive
-- ✦ Rotation export — rotate final PNG by any degree
-- ✦ Transparent PNG export — no background, clean on any surface
+- ✦ Rotation export — rotate final image by any degree
+- ✦ Adaptive JPEG export — guaranteed to fit within Oracle's VARCHAR2 limit regardless of stroke complexity
+- ✦ Correct drawing on responsive layouts — coordinates scale with CSS canvas size
+- ✦ Multiple pads per page — each instance is fully isolated
 - ✦ Configurable: width, height, pen color, pen width, placeholder text
-- ✦ Safe DB submit — guards against empty/corrupt base64
+- ✦ Safe DB submit — guards against empty/corrupt base64, surfaces errors via APEX notifications
 - ✦ Mobile-first — full touch and stylus support via Pointer Events API
 
 ## ⚙️ Plugin Attributes
@@ -30,7 +35,7 @@
 | 2 | Pen Color | Text | #000000 | Stroke color (hex) |
 | 3 | Canvas Width | Number | 600 | Width of signature canvas in px |
 | 4 | Pen Width | Number | 2 | Base stroke thickness in px |
-| 5 | Rotate Degrees | Number | 0 | Rotate exported PNG by N degrees |
+| 5 | Rotate Degrees | Number | 0 | Rotate exported image by N degrees |
 | 6 | Allow Text Signature | Select (Y/N) | N | Show typed name signature input |
 | 7 | Placeholder Text | Text | Sign here... | Canvas placeholder text |
 

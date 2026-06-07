@@ -6,7 +6,7 @@ This guide walks you through setting up the BioSig Pro Oracle APEX plugin in a p
 
 - Oracle APEX workspace access with rights to import plugins
 - Access to Shared Components in your target application
-- A page and table/process context ready to receive a PNG signature as BLOB
+- A page and table/process context ready to receive a JPEG signature as BLOB
 
 ## 1) Import the plugin `.sql` file into APEX
 
@@ -45,9 +45,9 @@ This guide walks you through setting up the BioSig Pro Oracle APEX plugin in a p
 
 1. Open the signature page item properties.
 2. Locate the **Session State** settings.
-3. Set storage to **Per Session (Disk)**.
+3. Set **Storage** to **Per Session (Disk)** and **Data Type** to **CLOB**.
 
-This is recommended for larger base64 payloads and reliable handling of signature content.
+This is critical — without CLOB storage, APEX truncates the base64 payload before the submit process runs, which is the root cause of partial or corrupt signatures appearing in the database.
 
 ## 6) Add the PL/SQL submit process
 
@@ -59,9 +59,18 @@ This is recommended for larger base64 payloads and reliable handling of signatur
 ## Validation Checklist
 
 - Signature draws correctly on desktop and mobile.
-- Hidden item receives base64 PNG content.
+- Drawing lands exactly under the pointer (no offset) on both desktop and scaled mobile layouts.
+- Hidden item receives base64 JPEG content after each stroke.
 - Submit process converts base64 to BLOB without errors.
-- Record is inserted and a generated file name is stored.
+- Record is inserted with MIME type `image/jpeg` and a `.jpg` filename.
+- Any save errors appear as inline APEX notifications rather than failing silently.
+
+## Upgrading from v1.0.0
+
+1. Replace `plugin/oraclewithhassan_biosig_pro.js` in Static Application Files with the v2 version.
+2. Replace the submit process PL/SQL with the updated `plsql/submit_process.sql`.
+3. Confirm the page item **Session State → Data Type** is set to **CLOB** (see step 5 above).
+4. If your downstream pipeline reads the stored MIME type, update it to accept `image/jpeg`.
 
 ## Next Step
 
