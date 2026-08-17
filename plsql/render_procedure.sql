@@ -41,15 +41,18 @@ begin
     sys.htp.p('  <input type="hidden" name="'||l_name||'" id="'||p_item.name||'" value="">');
     sys.htp.p('</div>');
 
+    -- Pen Color and Placeholder Text are free-text plugin attributes; escape
+    -- them as JS string literals so a stray quote/backslash can't break the
+    -- generated onload code or inject script into the page.
     apex_javascript.add_onload_code(
         p_code => 'initBioSigPro({' ||
-                      'id:              "'  || p_item.name   || '",' ||
-                      'canvasWidth:      '  || l_width       || ','  ||
-                      'canvasHeight:     '  || l_height      || ','  ||
-                      'strokeColor:     "'  || l_pen_color   || '",' ||
-                      'strokeWidth:      '  || l_pen_width   || ','  ||
-                      'rotateDeg:        '  || l_rotate      || ','  ||
-                      'placeholderText: "'  || l_placeholder || '"'  ||
+                      'id:              ' || apex_escape.js_literal(p_item.name)   || ',' ||
+                      'canvasWidth:      ' || l_width       || ','  ||
+                      'canvasHeight:     ' || l_height      || ','  ||
+                      'strokeColor:     '  || apex_escape.js_literal(l_pen_color)   || ',' ||
+                      'strokeWidth:      ' || l_pen_width   || ','  ||
+                      'rotateDeg:        ' || l_rotate      || ','  ||
+                      'placeholderText: '  || apex_escape.js_literal(l_placeholder) ||
                   '});'
     );
 end render_biosig_pro;

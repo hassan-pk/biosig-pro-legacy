@@ -10,11 +10,12 @@ This guide walks you through setting up the BioSig Pro Oracle APEX plugin in a p
 
 ## 1) Import the plugin `.sql` file into APEX
 
-1. In your APEX application, go to **Shared Components**.
-2. Open **Plugins**.
-3. Click **Import**.
-4. Select the BioSig Pro plugin export SQL file.
-5. Complete the import wizard and verify the plugin appears in your plugin list.
+1. Download the plugin export SQL file from the [v2.0.0 release assets](https://github.com/hassan-pk/biosig-pro/releases/download/v2.0.0/item_type_plugin_oraclewithhassan_biosig_pro.sql).
+2. In your APEX application, go to **Shared Components**.
+3. Open **Plugins**.
+4. Click **Import**.
+5. Select the downloaded `item_type_plugin_oraclewithhassan_biosig_pro.sql` file.
+6. Complete the import wizard and verify the plugin appears in your plugin list.
 
 ## 2) Upload JavaScript and CSS to Static Application Files
 
