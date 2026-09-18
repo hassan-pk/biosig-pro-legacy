@@ -1,3 +1,8 @@
+> **⚠️ Archived.** This repository is no longer maintained and does not receive
+> updates, bug fixes, or support. It has been superseded by a newer, commercially
+> supported rebuild of BioSig Pro. This code is kept here for historical reference
+> only — do not use it for new work.
+
 ![Oracle APEX](https://img.shields.io/badge/Oracle-APEX-red?logo=oracle&logoColor=white)
 ![PL/SQL](https://img.shields.io/badge/PL%2FSQL-Database-blue)
 ![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-yellow?logo=javascript&logoColor=black)
